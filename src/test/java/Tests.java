@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -15,8 +16,6 @@ public class Tests
 {
         WebDriver _globalDriver;
     String _email = new String();
-//        WebDriverWait wait = new WebDriverWait(_globalDriver, Duration.ofSeconds(1));
-//        wait.(ExpectedConditions.)
 
     @BeforeClass
     public static String generateRandomEmail() {
@@ -51,8 +50,11 @@ public class Tests
 
     @BeforeTest
     public void SetupWebDriver(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
         _globalDriver=new ChromeDriver();
         _globalDriver.get("https://vynoteka.lt/");
+        _globalDriver.manage().window().maximize();
     }
 
 
@@ -298,18 +300,19 @@ public class Tests
         }
         WebElement resultText1 = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a"));
         Assert.assertEquals(resultText1.getText(),"Limoncello Della Scogliera Blu 0,7 L");
+
         WebElement resultPrice = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[3]/span"));
+        String priceText = resultPrice.getText();
         _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a")).click();
+
         WebElement resultEuro = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[1]"));
+        String euroText = resultEuro.getText();
         WebElement resultPennies = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[2]"));
-        Assert.assertEquals(resultPrice.getText(),(resultEuro.getText()+","+resultPennies.getText()));
+        String penniesText = resultPennies.getText();
+        String fullPriceText = euroText + "." + penniesText + " €";
 
-
-
-
-
-
-
+        Assert.assertEquals(priceText, fullPriceText);
+        _globalDriver.close();
     }
 }
 
