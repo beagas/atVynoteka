@@ -86,7 +86,7 @@ public class Tests
         }
 
     @Test
-    public void estTC0102(){
+    public void testTC0102(){
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
@@ -118,7 +118,6 @@ public class Tests
             e.printStackTrace();
         }
         _globalDriver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div[2]/div[2]/button")).click();
-        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[4]/div/div/div/a/img[2]"));
         try {
             TimeUnit.SECONDS.sleep(15);
         } catch (InterruptedException e) {
@@ -178,18 +177,8 @@ public class Tests
         _globalDriver.findElement(By.id("lastname")).sendKeys("Limoncello");
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[1]/button")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[1]/div/div/span[2]/div/div/button[8]")).click();//pasirenkami gimimo metai
-        try {
-            TimeUnit.SECONDS.sleep(5);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[1]/button")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[2]/div/div/span[2]/div/div/button[1]")).click();//pasirenkamas gimimo mėnuo
-        try {
-            TimeUnit.SECONDS.sleep(7);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[1]/button")).click();
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div/div/form/div[1]/div/div[3]/div/div/div[3]/div/div/span[2]/div/div/button[1]")).click();//pasirenkama gimimo diena
         _globalDriver.findElement(By.id("email")).sendKeys(_email);
