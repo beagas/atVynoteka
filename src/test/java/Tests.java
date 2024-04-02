@@ -302,7 +302,7 @@ public class Tests
         String priceText = resultPrice.getText();
 
         _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a")).click();//atidaromas produkto aprašymas
-        WebElement resultEuro = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[1]"));
+        WebElement resultEuro = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[1]"));//išsaugojama produkto kaina
         String euroText = resultEuro.getText();
 
         WebElement resultPennies = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[2]"));
