@@ -281,14 +281,14 @@ public class Tests
             e.printStackTrace();
         }
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/div/form/div[1]/div/button")).click();//adreso patvirtinimas
-        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/div/form/div/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/div/form/div/button")).click();//kitas etapas
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div[4]")).click();
-        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/button")).click();
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div[4]")).click();//pasirenkamas atvežimo laikas
+        _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[2]/button")).click();//
         _globalDriver.findElement(By.xpath("/html/body/div[2]/div[5]/div/div/div/div[2]/div[3]/div[1]/button")).click();//peržiūrėti krepšelį
         try {
             TimeUnit.SECONDS.sleep(20);
@@ -296,14 +296,15 @@ public class Tests
             e.printStackTrace();
         }
         WebElement resultText1 = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a"));
-        Assert.assertEquals(resultText1.getText(),"Limoncello Della Scogliera Blu 0,7 L");
+        Assert.assertEquals(resultText1.getText(),"Limoncello Della Scogliera Blu 0,7 L");// tikrinama ar sutampa prekės pavadiniams
 
         WebElement resultPrice = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[3]/span"));
         String priceText = resultPrice.getText();
-        _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a")).click();
 
+        _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/section/div/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/div/div[1]/div/div[2]/a")).click();//atidaromas produkto aprašymas
         WebElement resultEuro = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[1]"));
         String euroText = resultEuro.getText();
+
         WebElement resultPennies = _globalDriver.findElement(By.xpath("/html/body/div[1]/div[1]/main/div[2]/section[1]/div/div/div/div/div/div[2]/div[2]/div[1]/div/div[1]/div/div[1]/div/div/span[2]"));
         String penniesText = resultPennies.getText();
         String fullPriceText = euroText + "." + penniesText + " €";
